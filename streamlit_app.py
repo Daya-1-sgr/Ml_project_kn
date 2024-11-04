@@ -21,7 +21,7 @@ writing_score=st.slider('writing_score',17,100,69)
 data=CustomData(gender=gender,race_ethnicity=race_ethnicity,parental_level_of_education=parental_level_of_education,
                 lunch=lunch,test_preparation_course=test_preparation_course,writing_score=writing_score,
                 reading_score=reading_score)
-input_dataframedata.get_data_as_frame()
+input_dataframe=data.get_data_as_frame()
 
 input_dataframe
 
