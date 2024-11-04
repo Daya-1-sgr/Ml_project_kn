@@ -18,10 +18,10 @@ test_preparation_course=st.selectbox('test_preparation_course',('none', 'complet
 reading_score=st.slider('reading score',10,100,68)
 writing_score=st.slider('writing_score',17,100,69)
 
-
-data={'gender':gender,'race_ethnicity':race_ethnicity,'parental_level_of_education':parental_level_of_education
-      ,'lunch':lunch,'test_preparation_course':test_preparation_course,'reading_score':reading_score,'writing_score':writing_score}
-input_dataframe=CustomData.get_data_as_frame(data)
+data=CustomData(gender=gender,race_ethnicity=race_ethnicity,parental_level_of_education=parental_level_of_education,
+                lunch=lunch,test_preparation_course=test_preparation_course,writing_score=writing_score,
+                reading_score=reading_score)
+input_dataframedata.get_data_as_frame()
 
 input_dataframe
 
