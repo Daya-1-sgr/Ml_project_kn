@@ -35,6 +35,6 @@ class CustomData:
                                'parental_level_of_education':self.parental_level_of_education,'lunch':self.lunch,
                                'test_preparation_course':self.test_preparation_course,'reading_score':self.reading_score,
                                'writing_score':self.writing_score}
-            return pd.DataFrame(custom_input_data)
+            return pd.DataFrame(custom_input_data,index=[0])
         except Exception as e:
             raise CustomException(e,sys)
