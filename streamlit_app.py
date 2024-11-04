@@ -25,8 +25,9 @@ input_dataframe=data.get_data_as_frame()
 
 input_dataframe
 
-prediction=PredictPipeline.predict(input_dataframe)
+prediction=PredictPipeline()
+preds=prediction.predict(input_dataframe)
 st.title('the prediction is :')
-prediction
+preds
 
 
