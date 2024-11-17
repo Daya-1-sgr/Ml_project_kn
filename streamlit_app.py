@@ -1,33 +1,50 @@
 import streamlit as st
-from src.pipeline.predict_pipeline import PredictPipeline,CustomData
+from src.pipeline.predict_pipeline import PredictPipeline, CustomData
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 
+st.title('Welcome to the Prediction App!')
 
-st.title('Hello there')
 
-st.header('input features')
-gender=st.selectbox('gender',('male','female'))
-race_ethnicity=st.selectbox('race_ethnicity',('group B', 'group C', 'group A', 'group D', 'group E'))
-parental_level_of_education=st.selectbox('Parental_level_of_education',("bachelor's degree", 'some college', "master's degree",
-       "associate's degree", 'high school', 'some high school'))
-lunch=st.selectbox('lunch',('standard', 'free/reduced'))
-test_preparation_course=st.selectbox('test_preparation_course',('none', 'completed'))
-reading_score=st.slider('reading score',10,100,68)
-writing_score=st.slider('writing_score',17,100,69)
+st.header('Please input the following details:')
 
-data=CustomData(gender=gender,race_ethnicity=race_ethnicity,parental_level_of_education=parental_level_of_education,
-                lunch=lunch,test_preparation_course=test_preparation_course,writing_score=writing_score,
-                reading_score=reading_score)
-input_dataframe=data.get_data_as_frame()
 
-input_dataframe
+gender = st.selectbox('Gender', ('male', 'female'))
+race_ethnicity = st.selectbox('Race/Ethnicity', ('group B', 'group C', 'group A', 'group D', 'group E'))
+parental_level_of_education = st.selectbox(
+    'Parental Level of Education', 
+    ("bachelor's degree", 'some college', "master's degree", "associate's degree", 'high school', 'some high school')
+)
+lunch = st.selectbox('Lunch', ('standard', 'free/reduced'))
+test_preparation_course = st.selectbox('Test Preparation Course', ('none', 'completed'))
+reading_score = st.slider('Reading Score', 10, 100, 68)
+writing_score = st.slider('Writing Score', 10, 100, 69)
 
-prediction=PredictPipeline()
-preds=prediction.predict(input_dataframe)
-st.title('the prediction is :')
-preds
+# Create a CustomData instance using the inputs
+data = CustomData(
+    gender=gender,
+    race_ethnicity=race_ethnicity,
+    parental_level_of_education=parental_level_of_education,
+    lunch=lunch,
+    test_preparation_course=test_preparation_course,
+    writing_score=writing_score,
+    reading_score=reading_score
+)
+
+# Convert the data into a DataFrame for prediction
+input_dataframe = data.get_data_as_frame()
+
+# Display the input data as a table for reference
+st.subheader('Input Data:')
+st.write(input_dataframe)
+
+# Make prediction using the pipeline
+prediction = PredictPipeline()
+preds = prediction.predict(input_dataframe)
+
+# Display the prediction result
+st.title(f'The predicted result is: {preds[0]}')
 
 
