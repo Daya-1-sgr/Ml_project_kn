@@ -47,4 +47,4 @@ if st.button('Make Prediction'):
     
     # Display the prediction result
     st.subheader('Prediction Result:')
-    st.write(f'The predicted result is: {preds[0]}')
+    st.write(f'The Maths Score is: {preds[0]}')
