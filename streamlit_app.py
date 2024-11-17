@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 
-st.title('Welcome to the Prediction App!')
+st.title('Math Score Predictor')
 
 
 st.header('Please input the following details:')
@@ -40,11 +40,11 @@ input_dataframe = data.get_data_as_frame()
 st.subheader('Input Data:')
 st.write(input_dataframe)
 
-# Make prediction using the pipeline
-prediction = PredictPipeline()
-preds = prediction.predict(input_dataframe)
-
-# Display the prediction result
-st.title(f'The predicted result is: {preds[0]}')
-
-
+if st.button('Make Prediction'):
+    # Make prediction using the pipeline
+    prediction = PredictPipeline()
+    preds = prediction.predict(input_dataframe)
+    
+    # Display the prediction result
+    st.subheader('Prediction Result:')
+    st.write(f'The predicted result is: {preds[0]}')
